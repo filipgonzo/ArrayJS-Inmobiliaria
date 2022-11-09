@@ -69,23 +69,47 @@ for (let propiedad of propiedadesJson){
   </div>
 `
 }
-
-
 const prop = document.querySelector("#propiedad");
-
 prop.innerHTML = html;
 
 function filtroPropiedades(){
-  const cantidadCuartos = document.querySelector('#cantidadCuartos').Value;
+  const cantidadCuartos = document.querySelector('#cantidadCuartos').value;
   const metrosDesde = document.querySelector('#desde').value;
   const metrosHasta = document.querySelector('#hasta').value;
 
-  let htmlFiltrado = '';
+  let htmlFiltrado = ''; 
+  let contador = 0;
+
   for(const inmueble of propiedadesJson){
-    if (cantidadCuartos == inmueble.rooms){
-      htmlFiltrado += inmueble;
+    
+    if (cantidadCuartos == inmueble.rooms && (inmueble.m >= metrosDesde && inmueble.m <= metrosHasta))
+    {
+      contador++;
+      htmlFiltrado += `
+      <div class="propiedades" id="propiedad">
+        <div class="propiedad" >
+          <div class="img" style="background-image: url(${inmueble.src})"></div>  
+          <section>
+            <h5>${inmueble.name}</h5>
+            <div class="d-flex flex-column">
+            <p>Dormitorios: ${inmueble.rooms}</p>
+            <p>Metros: ${inmueble.m}</p>
+          </div>
+          <p class="my-3">${inmueble.description}</p>
+          <button class="btn btn-info ">Ver más</button>
+          </section>
+        </div>
+      </div>
+    `
     }
-  }
+  } 
+    
   const prop = document.querySelector("#propiedad");
+  const cont = document.querySelector("#totalElementos");
+  cont.innerHTML = contador;
   prop.innerHTML = htmlFiltrado;
-}
+  if (contador==0){
+    alert("¡no se han encontrado coincidencias en su busqueda!");
+  }   
+  }
+  

@@ -103,13 +103,14 @@ function filtroPropiedades(){
     `
     }
   } 
+  if (cantidadCuartos==="") {
+    alert("¡faltan campos por llenar!");
+  }
     
   const prop = document.querySelector("#propiedad");
   const cont = document.querySelector("#totalElementos");
   cont.innerHTML = contador;
   prop.innerHTML = htmlFiltrado;
-  if (contador==0){
-    alert("¡no se han encontrado coincidencias en su busqueda!");
-  }   
+
   }
   

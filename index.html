@@ -16,30 +16,30 @@
     <nav>
         <section>
             <div>
-                <p>Cantidad de cuartos:</p> <input min="0" class="form-control w-50 m-auto" type="number">
+                <p>Cantidad de cuartos:</p> <input min="0" class="form-control w-50 m-auto" type="number" id="cantidadCuartos">
             </div>
             <div>
                 <span>Metros cuadrados </span>
                 <div class="d-flex">
                     <div class="me-4">
-                        <p>desde: </p><input min="0" class="form-control " type="number">
+                        <p>desde: </p><input min="0" class="form-control " type="number" id="desde">
                     </div>
                     <div>
                         <p> hasta:</p>
-                        <input min="0" class="form-control " type="number">
+                        <input min="0" class="form-control " type="number" id="hasta">
                     </div>
                 </div>
             </div>
         </section>
 
-        <button class="btn btn-warning">Buscar</button>
+        <button class="btn btn-warning" onclick="filtroPropiedades()">Buscar</button>
     </nav>
 
 
 
 
-    <section id="Propiedades">
-        <h4 class="py-3">Total: <span>6</span></h4>
+    <section id="propiedades">
+        <h4 class="py-3">Total: <span id="totalElementos">0</span></h4>
 
         <div class="propiedades" id="propiedad">
             <div class="propiedad" >

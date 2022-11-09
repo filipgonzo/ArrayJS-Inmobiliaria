@@ -1,4 +1,4 @@
-const propiedades = [
+const propiedadesJson = [
   {
     name: "Casa de campo",
     description: "Un lugar ideal para descansar de la ciudad",
@@ -51,9 +51,9 @@ const propiedades = [
 ];
  
 let html =" "
-for (let propiedad of propiedades){
+for (let propiedad of propiedadesJson){
  html += `
- <div class="propiedades" id="propiedad">
+  <div class="propiedades" id="propiedad">
     <div class="propiedad" >
       <div class="img" style="background-image: url(${propiedad.src})"></div>  
       <section>
@@ -62,13 +62,30 @@ for (let propiedad of propiedades){
         <p>Dormitorios: ${propiedad.rooms}</p>
         <p>Metros: ${propiedad.m}</p>
       </div>
-        <p class="my-3">${propiedad.description}</p>
+      <p class="my-3">${propiedad.description}</p>
       <button class="btn btn-info ">Ver más</button>
       </section>
     </div>
   </div>
 `
 }
+
+
 const prop = document.querySelector("#propiedad");
 
 prop.innerHTML = html;
+
+function filtroPropiedades(){
+  const cantidadCuartos = document.querySelector('#cantidadCuartos').Value;
+  const metrosDesde = document.querySelector('#desde').value;
+  const metrosHasta = document.querySelector('#hasta').value;
+
+  let htmlFiltrado = '';
+  for(const inmueble of propiedadesJson){
+    if (cantidadCuartos == inmueble.rooms){
+      htmlFiltrado += inmueble;
+    }
+  }
+  const prop = document.querySelector("#propiedad");
+  prop.innerHTML = htmlFiltrado;
+}

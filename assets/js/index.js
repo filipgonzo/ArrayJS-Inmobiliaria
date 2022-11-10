@@ -80,6 +80,11 @@ function filtroPropiedades(){
   let htmlFiltrado = ''; 
   let contador = 0;
 
+  if (cantidadCuartos=="" || (metrosDesde=='' || metrosHasta == '')) {
+    alert("¡faltan campos por llenar!");
+  }
+
+   
   for(const inmueble of propiedadesJson){
     
     if (cantidadCuartos == inmueble.rooms && (inmueble.m >= metrosDesde && inmueble.m <= metrosHasta))
@@ -103,9 +108,7 @@ function filtroPropiedades(){
     `
     }
   } 
-  if (cantidadCuartos==="") {
-    alert("¡faltan campos por llenar!");
-  }
+ 
     
   const prop = document.querySelector("#propiedad");
   const cont = document.querySelector("#totalElementos");
